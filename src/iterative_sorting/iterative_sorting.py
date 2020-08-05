@@ -1,5 +1,5 @@
 def selection_sort(arr):
-    for i in range(0, len(arr) - 1):
+    for i in range(len(arr) - 1):
         smallest_elem_index = i
         for j in range(i, len(arr)):
             if arr[j] < arr[smallest_elem_index]:
@@ -10,9 +10,9 @@ def selection_sort(arr):
 
 
 def bubble_sort(arr):
-    for i in range(0, len(arr) - 1):
+    for i in range(len(arr) - 1):
         flag = 1
-        for j in range(0, len(arr) - (i + 1)):
+        for j in range(len(arr) - (i + 1)):
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 flag = 0
@@ -45,13 +45,13 @@ def counting_sort(arr, maximum=None):
     if len(arr):
         if not maximum:
             maximum = arr[0]
-            for i in range(0, len(arr)):  # O(n)
+            for i in range(len(arr)):  # O(n)
                 if arr[i] < 0:
                     return "Error, negative numbers not allowed in Count Sort"
                 if arr[i] > maximum:
                     maximum = arr[i]
 
-        counterArr = [0 for i in range(0, maximum + 1)]  # O(n)
+        counterArr = [0 for i in range(maximum + 1)]  # O(n)
 
         for num in arr:  # O(n)
             counterArr[num] += 1
