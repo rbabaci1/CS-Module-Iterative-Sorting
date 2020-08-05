@@ -21,9 +21,6 @@ def bubble_sort(arr):
     return arr
 
 
-a = [26, 5, 7, 3, 1]
-print(bubble_sort(a))
-
 """
 STRETCH: implement the Counting Sort function below
 
@@ -44,6 +41,20 @@ What is the time and space complexity of the counting sort algorithm?
 
 
 def counting_sort(arr, maximum=None):
-    # Your code here
+    sortedArr = list()
+    if len(arr):
+        if not maximum:
+            maximum = arr[0]
+            for i in range(0, len(arr)):
+                if arr[i] < 0:
+                    return "Error, negative numbers not allowed in Count Sort"
+                if arr[i] > maximum:
+                    maximum = arr[i]
 
-    return arr
+        counterArr = [0 for i in range(0, maximum + 1)]
+
+        for num in arr:
+            counterArr[num] += 1
+        for j in range(0, len(counterArr)):
+            [sortedArr.append(j) for k in range(0, counterArr[j])]
+    return sortedArr
