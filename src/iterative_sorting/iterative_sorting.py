@@ -41,7 +41,7 @@ What is the time and space complexity of the counting sort algorithm?
 
 
 def counting_sort(arr, maximum=None):
-    sortedArr = [0 for n in arr]
+    sortedArr = [0 for n in arr]  # O(n)
     if len(arr):
         if not maximum:
             maximum = arr[0]
@@ -55,11 +55,11 @@ def counting_sort(arr, maximum=None):
 
         for num in arr:  # O(n)
             counterArr[num] += 1
-        for i in range(1, len(counterArr)):
+        for i in range(1, len(counterArr)):  # O(k) where k is the max number in arr
             counterArr[i] = counterArr[i - 1] + counterArr[i]
 
         end = len(arr) - 1
-        while end >= 0:
+        while end >= 0:  # O(n)
             current = arr[end]
             index = counterArr[current] - 1
             sortedArr[index] = current
@@ -67,6 +67,6 @@ def counting_sort(arr, maximum=None):
     return sortedArr
 
     """
-    1- The time complexity for this algorithm is O(n^2)
-    2- The space complexity is O(n + k) where max n is the maximum number in size n
+    1- The time complexity for this algorithm is O(n + k)
+    2- The space complexity is O(n + k) where k is the maximum number in the array
     """
