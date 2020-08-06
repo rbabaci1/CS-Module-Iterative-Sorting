@@ -21,18 +21,15 @@ def bubble_sort(arr, opt=1):
     return arr
 
 
-# def recursive_bubble_sort(arr, opt=1):
-#     unsorted_len = len(arr)
+# def bubble_sort(arr, sorted_length=0):
+#     unsorted_length = len(arr) - sorted_length
 #     swap_occurred = False
-#     for j in range(unsorted_len - opt):
+#     for j in range(unsorted_length - 1):
 #         if arr[j] > arr[j + 1]:
 #             arr[j], arr[j + 1] = arr[j + 1], arr[j]
 #             swap_occurred = True
-
-#     if not swap_occurred or not unsorted_len:
-#         return arr
-#     else:
-#         bubble_sort(arr, opt + 1)
+#     if swap_occurred and unsorted_length:
+#         bubble_sort(arr, sorted_length + 1)
 
 #     return arr
 
