@@ -9,16 +9,31 @@ def selection_sort(arr):
     return arr
 
 
-def bubble_sort(arr):
-    for i in range(len(arr) - 1):
-        swap_occurred = False
-        for j in range(len(arr) - (i + 1)):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                swap_occurred = True
-        if not swap_occurred:
-            break
+def bubble_sort(arr, opt=1):
+    unsorted_len = len(arr)
+    swap_occurred = False
+    for j in range(unsorted_len - opt):
+        if arr[j] > arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            swap_occurred = True
+
+    if not swap_occurred or not unsorted_len:
+        return arr
+    else:
+        bubble_sort(arr, opt + 1)
+
     return arr
+
+
+# for i in range(len(arr) - 1):
+#     swap_occurred = False
+#     for j in range(len(arr) - (i + 1)):
+#         if arr[j] > arr[j + 1]:
+#             arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#             swap_occurred = True
+#     if not swap_occurred:
+#         break
+# return arr
 
 
 """
