@@ -11,12 +11,12 @@ def selection_sort(arr):
 
 def bubble_sort(arr):
     for i in range(len(arr) - 1):
-        flag = 0
+        swap_occurred = False
         for j in range(len(arr) - (i + 1)):
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                flag = 1
-        if not flag:
+                swap_occurred = True
+        if not swap_occurred:
             break
     return arr
 
