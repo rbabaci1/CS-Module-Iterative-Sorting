@@ -51,7 +51,7 @@ def counting_sort(arr, maximum=None):
                 if arr[i] > maximum:
                     maximum = arr[i]
 
-        counterArr = [0 for i in range(maximum + 1)]  # O(n)
+        counterArr = [0 for i in range(maximum + 1)]  # O(k) where k is the max in arr
 
         for num in arr:  # O(n)
             counterArr[num] += 1
