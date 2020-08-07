@@ -8,7 +8,7 @@ def linear_search(arr, target):
 def binary_search(arr, target):
     start, end = 0, len(arr) - 1
     while start <= end:
-        midpoint = start + end // 2
+        midpoint = (start + end) // 2
         if arr[midpoint] == target:
             return midpoint  # found
         if arr[midpoint] > target:
