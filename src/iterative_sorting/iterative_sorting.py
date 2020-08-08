@@ -1,28 +1,40 @@
-# TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
-
+    for i in range(len(arr) - 1):
+        smallest_elem_index = i
+        for j in range(i, len(arr)):
+            if arr[j] < arr[smallest_elem_index]:
+                smallest_elem_index = j
+        if smallest_elem_index != i:
+            arr[i], arr[smallest_elem_index] = arr[smallest_elem_index], arr[i]
     return arr
 
 
-# TO-DO:  implement the Bubble Sort function below
-def bubble_sort(arr):
-    # Your code here
-
-
+def bubble_sort(arr, opt=1):
+    for i in range(len(arr) - 1):
+        swap_occurred = False
+        for j in range(len(arr) - (i + 1)):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swap_occurred = True
+        if not swap_occurred:
+            break
     return arr
 
-'''
+
+# def bubble_sort(arr, sorted_length=0):
+#     unsorted_length = len(arr) - sorted_length
+#     swap_occurred = False
+#     for j in range(unsorted_length - 1):
+#         if arr[j] > arr[j + 1]:
+#             arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#             swap_occurred = True
+#     if swap_occurred and unsorted_length:
+#         bubble_sort(arr, sorted_length + 1)
+
+#     return arr
+
+
+"""
 STRETCH: implement the Counting Sort function below
 
 Counting sort is a sorting algorithm that works on a set of data where
@@ -38,9 +50,36 @@ showed up, we can construct a sorted set of the input data from the
 buckets. 
 
 What is the time and space complexity of the counting sort algorithm?
-'''
+"""
+
+
 def counting_sort(arr, maximum=None):
-    # Your code here
+    sortedArr = [0 for n in arr]  # O(n)
+    if len(arr):
+        if not maximum:
+            maximum = arr[0]
+            for i in range(len(arr)):  # O(n)
+                if arr[i] < 0:
+                    return "Error, negative numbers not allowed in Count Sort"
+                if arr[i] > maximum:
+                    maximum = arr[i]
 
+        counterArr = [0 for i in range(maximum + 1)]  # O(k) where k is the max in arr
 
-    return arr
+        for num in arr:  # O(n)
+            counterArr[num] += 1
+        for i in range(1, len(counterArr)):  # O(k) where k is the max number in arr
+            counterArr[i] = counterArr[i - 1] + counterArr[i]
+
+        end = len(arr) - 1
+        while end >= 0:  # O(n)
+            current = arr[end]
+            index = counterArr[current] - 1
+            sortedArr[index] = current
+            end -= 1
+    return sortedArr
+
+    """
+    1- The time complexity for this algorithm is O(n + k)
+    2- The space complexity is O(n + k) where k is the maximum number in the array
+    """
